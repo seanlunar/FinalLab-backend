@@ -7,7 +7,7 @@ use App\Http\Controllers\ResourcesController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::middleware([
@@ -19,6 +19,10 @@ Route::middleware([
     //     return view('dashboard');
     // })->name('dashboard');
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::get('/add-student', [HomeController::class, 'create'])->name('adduser');
+    Route::post('/save-student', [HomeController::class, 'store'])->name('savestudent');
+
+
 });
 
 

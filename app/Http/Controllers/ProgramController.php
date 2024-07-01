@@ -54,7 +54,8 @@ class ProgramController extends Controller
      */
     public function show(Program $program)
     {
-        return view('program.show', compact('program'));
+        $users = User::where('program_id', $program->id)->get();
+        return view('program.show', compact('program','users'));
     }
 
     /**
