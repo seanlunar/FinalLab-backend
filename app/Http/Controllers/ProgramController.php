@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Program;
 use App\Http\Requests\StoreProgramRequest;
 use App\Http\Requests\UpdateProgramRequest;
-use App\Models\Program;
 
 class ProgramController extends Controller
 {
@@ -21,7 +22,10 @@ class ProgramController extends Controller
      */
     public function create()
     {
-        //
+        $teacher = User::role('teacher')->get();
+
+        // dd($teacher);
+        return view('program.create', compact('teacher'));
     }
 
     /**

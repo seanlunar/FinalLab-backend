@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\ResourcesController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,3 +18,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+Route::resource('programs', ProgramController::class);
+Route::resource('assignment', AssignmentController::class);
+Route::resource('sharedcontent', ResourcesController::class);
+

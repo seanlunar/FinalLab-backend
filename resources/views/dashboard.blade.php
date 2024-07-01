@@ -21,6 +21,8 @@
         <h4>your an parent</h4>
     @elseif (Auth::user()->hasRole('teacher'))
         <div style="margin-top:50px;">
+
+            <a href="{{ route('programs.create') }}">add class</a>
             <h2>Your classes</h2>
         <table class="table">
             <thead class="table-dark">
