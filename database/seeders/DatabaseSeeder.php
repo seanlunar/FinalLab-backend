@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +15,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $role = Role::create(['name' => 'admin']);
+        $roleone = Role::create(['name' => 'teacher']);
+        $roletwo = Role::create(['name' => 'student']);
+        $role3 = Role::create(['name' => 'parent']);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+
+
+        $user = User::create([
+          'name' => 'DMI-UNIVERSITY',
+          'email_verified_at' => Carbon::now(),
+          'email' => 'admin@dmi.com',
+          'password' => bcrypt('password'),
+
         ]);
+        $user->assignRole($role);
     }
 }

@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('assignments', function (Blueprint $table) {
             $table->id();
+            $table->integer('class_id');
+            $table->string('title');
+            $table->date('duedate');
             $table->timestamps();
         });
     }
