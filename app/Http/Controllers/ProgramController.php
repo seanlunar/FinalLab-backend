@@ -33,15 +33,28 @@ class ProgramController extends Controller
      */
     public function store(StoreProgramRequest $request)
     {
-        //
+        // dd($request->all());
+        Program::create($this->validateRequest());
+
+        return to_route('dashboard');
     }
 
+
+    private function validateRequest()
+    {
+        return request()->validate([
+            'department' => 'required',
+            'year' => 'required',
+            'semester' => 'required',
+            'user_id' => 'required',
+        ]);
+    }
     /**
      * Display the specified resource.
      */
     public function show(Program $program)
     {
-        //
+        return view('program.show', compact('program'));
     }
 
     /**
